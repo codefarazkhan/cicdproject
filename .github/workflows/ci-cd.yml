@@ -3,7 +3,7 @@ name: Deploy Node.js App
 on:
   push:
     branches:
-      - develop  # Triggers when merged changes are pushed to develop
+      - main  # Triggers when merged changes are pushed to develop
 
 jobs:
   deploy:
@@ -21,6 +21,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /home/ubuntu/cicdproject
-            git pull origin develop
+            git pull origin main
             npm install
-            pm2 restart app
+            npx pm2 restart app
